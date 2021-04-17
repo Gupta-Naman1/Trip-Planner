@@ -7,16 +7,18 @@ var express               = require("express"),
 	User				  = require("./models/user"),
 	TouristPlace          = require("./models/touristPlace"),
 	passportLocalMongoose = require("passport-local-mongoose"),
+	// ejsMate = require('ejs-mate');
 	app                   = express();
 //APP CONFIGURATION
 
 app.use(express.static("public"));
 app.set("view engine","ejs");
+// app.engine('ejs', ejsMate);
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
 mongoose.connect("mongodb://localhost/college_project_3",{useNewUrlParser: true, useUnifiedTopology: true});
 app.use(require("express-session")({
-	secret: "Rusty is the best and cutest dog in the world",
+	secret: "I love ADA",
 	resave: false,
 	saveUninitialized: false
 }));
@@ -32,10 +34,11 @@ app.use(function(req,res,next){
 	res.locals.currentUser = req.user;
 	next();
 });
+//adding info to databases
 // TouristPlace.create({
-// 	title:"Barangaroo Reserve",
-// 	image:"https://img.traveltriangle.com/blog/wp-content/tr:w-700,h-400/uploads/2017/02/Barangaroo_Reserve_Walumil_Lawns.jpg",
-// 	description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text."
+// 	title:"Byron Bay",
+// 	image:"https://www.tourist-destinations.com/wp-content/uploads/2013/03/Things-To-Do-in-Byron-Bay-3634.jpg.optimal.jpg",
+// 	description: "Byron Bay is a coastal town located on the far-north coast of NSW, Australia. Home to Australia's most easterly point and the iconic Cape Byron lighthouse, the region is known for its spectacular beaches, unique shopping and dining experiences, world-class festivals, and vibrant community spirit."
 // },function(err,touristPlace){
 // 	if(!err){
 // 		console.log(touristPlace);

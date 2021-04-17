@@ -5,3 +5,4 @@ var touristPlaceSchema = new mongoose.Schema({
 	description: String
 });
 module.exports = mongoose.model("TouristPlace",touristPlaceSchema);
+
